@@ -1,0 +1,36 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{15348DC2-5447-41A1-91CB-D598A4035C4E}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="CheckAdminRights.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="CheckAdminRights">
+        <MSBuild Projects="CheckAdminRights.dproj"/>
+    </Target>
+    <Target Name="CheckAdminRights:Clean">
+        <MSBuild Projects="CheckAdminRights.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="CheckAdminRights:Make">
+        <MSBuild Projects="CheckAdminRights.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="CheckAdminRights"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="CheckAdminRights:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="CheckAdminRights:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>
